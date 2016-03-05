@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            debugger;
+            $("#submit").click(function () {
+                var name = $("#Name").val();
+                var address = $("#Address").val();
+                //var dob = $("#DOB").val();
+                $.ajax({
+                    url: "/api/Values",
+                    type: "Post",
+                    data: JSON.stringify([name, address]), //{ Name: name,
+                    // Address: address, DOB: dob },
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) { },
+                    error: function () { alert('error'); }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+   
+    <input type="text" id="Name" />
+    <input type="text" id="Address" />
+    <input type="button" id="submit" />
+</body>
+</html>

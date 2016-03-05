@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        .floatLeft {
+            float: left;
+            width: 480px;
+            padding: 10px;
+        }
+    </style>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: 'http://10.64.98.69:9810/api/values',
+            type: 'GET',
+            success: function (data) {
+                //called when successful
+                var htmlContent = "";
+                $.each(data, function (index, value) {
+                    htmlContent += "<a href='" + value.AppLinks + "'>" + value.AppName + "</a><br/>";
+                });
+                $('#left').html(htmlContent);
+                $('#right').html(htmlContent);
+            },
+            error: function (e) {
+                //called when there is an error
+                //console.log(e.message);
+                alert(e.message);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div id="left" class="floatLeft"></div>
+        <div id="right" class="floatLeft"></div>
+    </div>
+</body>
+</html>
